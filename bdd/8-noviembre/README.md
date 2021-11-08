@@ -57,4 +57,28 @@ Para crear un alías para la selección que queremos hacer lo escribiremos de la
 SELECT FF_FI "Número de días"
 FROM PLAN_DOCENTE;
 ```
-También se aceptaría como nombre _numero_de_dias_.
+También se aceptaría como nombre _numero_de_dias_, otro ejemplo visto puede ser:
+
+```SQL
+SELECT UNIQUE CDC CIUDAD 
+FROM CLIENTE;
+```
+Esto muestra la columna de CDC pero con el nombre de columna CIUDAD
+```
+CIUDAD
+-------
+LA LAGUNA
+TACORONTE
+```
+El objeto del _FROM_ del _SELECT_ puede ser producto cartesiano de tablas
+```SQL
+SELECT *
+FROM TABLA1, TABLA2;
+```
+Esto equivale a `TABLA1 X TABLA2`, tengamos en cuenta que el producto cartesiano no es equivalente a una yunción natural.
+
+```SQL
+SELECT C1.DNI
+FROM CUENTA C1, CLIENTE C2;
+```
+
