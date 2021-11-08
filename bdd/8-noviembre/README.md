@@ -112,3 +112,19 @@ FROM CLIENTE NATURAL JOIN CUENTA;
 
 Visto en álgebra relacional como: `P(CDC)(CLIENTE*CUENTA)`.
 
+Para realizar una yunción interna de tablas incluyendo una condición de la que depender lo hacemos de la siguiente manera:
+
+```SQL
+SELECT CDC
+FROM CLIENTE INNER JOIN CUENTA ON (CIENTE.DNI = CUENTA.DNI);
+```
+
+Podemos utilizar las siguiente clausulas:
+
+* ON (_predicado_)
+* USING (_predicado_)
+* AND (_predicado_)
+* OR (_predicado_)
+* NOT (_predicado_)
+
+También existe la clausula _WHERE_ que podemos utilizar así: `WHERE CLIENTE.DNI = CUENTA.DNI;`
