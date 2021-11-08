@@ -35,6 +35,7 @@ Aunque SELECT sea la proyección, esta proyección *no* borra los duplicados a n
 ```SQL
 SELECT NBC FROM CLIENTES
 ``` 
+
 Para que no existan duplicados lo escribiriamos de la siguiente forma añadiendo la extension _DISTINCT_.
 
 ```SQL
@@ -57,28 +58,57 @@ Para crear un alías para la selección que queremos hacer lo escribiremos de la
 SELECT FF_FI "Número de días"
 FROM PLAN_DOCENTE;
 ```
+
 También se aceptaría como nombre _numero_de_dias_, otro ejemplo visto puede ser:
 
 ```SQL
 SELECT UNIQUE CDC CIUDAD 
 FROM CLIENTE;
 ```
+
 Esto muestra la columna de CDC pero con el nombre de columna CIUDAD
+
 ```
 CIUDAD
 -------
 LA LAGUNA
 TACORONTE
 ```
+
 El objeto del _FROM_ del _SELECT_ puede ser producto cartesiano de tablas
+
 ```SQL
 SELECT *
 FROM TABLA1, TABLA2;
 ```
+
 Esto equivale a `TABLA1 X TABLA2`, tengamos en cuenta que el producto cartesiano no es equivalente a una yunción natural.
 
 ```SQL
 SELECT C1.DNI
 FROM CUENTA C1, CLIENTE C2;
 ```
+
+Para representar el producto cartesiano:
+
+```SQL 
+SELECT *
+FROM T1 CROSS JOIN T2;
+``` 
+
+Para representar la yunción natural:
+
+```SQL
+SELECT *
+FROM T1 NATURAL JOIN T2;
+```
+
+Un ejemplo real:
+
+```SQL
+SELECT CDC
+FROM CLIENTE NATURAL JOIN CUENTA;
+```
+
+Visto en álgebra relacional como: `P(CDC)(CLIENTE*CUENTA)`.
 
