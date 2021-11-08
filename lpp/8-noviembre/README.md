@@ -1,6 +1,4 @@
-# Lenguajes y Paradigmas de Programación
-
-## Apuntes día 8 de noviembre
+# Apuntes día 8 de noviembre
 
 ### Herencia
 
