@@ -18,9 +18,17 @@ Class hija < madre
 
 end
 ```
-Ruby cuanta con las clases _public_, _private_ y _protected_.
+Ruby cuenta con las clases _public_, _private_ y _protected_.
 
 * public: De libre acceso (:var)
 * private: solo puede acceder el objeto (:var_a, :var_b)
 * protected: pueden acceder los objetos de la clase y también las clases hijos.
 
+```ruby
+def age_different(other)
+    self.age - other.age
+end
+```
+
+* Si fuera privado el age daría error
+* Si el age fuera protected self si podría acceder porque es el mismo tipo de clase
