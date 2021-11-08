@@ -127,4 +127,71 @@ Podemos utilizar las siguiente clausulas:
 * OR (_predicado_)
 * NOT (_predicado_)
 
-También existe la clausula _WHERE_ que podemos utilizar así: `WHERE CLIENTE.DNI = CUENTA.DNI;`
+También existe la clausula _WHERE_ (opcional) que podemos utilizar así: `WHERE CLIENTE.DNI = CUENTA.DNI;`.
+Si decidimos utilizar esta cláusula debe ir justo después de _FROM_ y equivale al operador selección del álgebra relacional.
+
+Dentro del _WHERE_ puede aparecer constantes, atributos, operaciones, expresiones, etc.
+
+Esta selección nos da los DNI de las personas con cuenta en la sucursal con código 1.
+
+```SQL
+SELECT DNI
+FROM CUENTA
+WHERE CS=1;
+```
+
+Esta selección nos da los DNI de las personas con cuenta en la sucursal con código 1 y 2, está mal porque una cuenta con dos códigos de cuenta no puede existir.
+
+```SQL
+SELECT DNI
+FROM CUENTA
+WHERE (CD=1) AND (CS=2);
+```
+
+Esta selección nos da los DNI de las sucursales con saldo mayor a 10.000:
+
+```SQL
+SELECT DNI
+FROM CUENTA
+WHERE SLD >= 10000;
+```
+
+El operador lógico _BETWEEN_:
+
+`expresion between exp1 and exp2`
+
+Si la expresión pertenece a [exp1, exp2], devuelve true, se puede obtener lo contrario escribiendo un _NOT_ delante del _BETWEEN_.
+
+Por ejemplo:
+
+```SQL
+SELECT DNI
+FROM CUENTA
+WHERE  CS=1 AND (NC BETWEEN 100 AND 300);
+```
+
+También se podría poner como `(NC >= 100) AND (NC <= 300)`
+
+El operador lógico _IN_:
+
+`expresion NOT IN (conjunto de valores)`
+
+Devuelve true si el valor está contenido en la expresión, este se pude negar igual que el _WHERE_.
+
+```SQL
+SELECT DNI
+FROM CUENTA
+WHERE CS IN (2, 4, 6);
+```
+
+También se podría poner como: `(CS=2) OR (CS=4) OR (CS=6)`, la operación contraria sería usando _AND_ en lugar de _OR_.
+
+DNI de personas que tienen cuenta en la sucursal donde tiene cuenta la persona con DNI 1111.
+
+```SQL
+SELECT DNI
+FROM CUENTA
+WHERE CS IN(SELECT CS
+            FROM CUENTA
+            WHERE DNI=1111);
+```
