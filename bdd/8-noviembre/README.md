@@ -195,3 +195,17 @@ WHERE CS IN(SELECT CS
             FROM CUENTA
             WHERE DNI=1111);
 ```
+
+Para negar la condición pondríamos `NOT IN`.
+
+Una resta se podría ver de la siguiente manera:
+
+```SQL
+SELECT CS
+FROM CUENTA C1
+WHERE DNI NOT IN (SELECT DNI
+                  FROM CUENTA
+                  WHERE SLD > 10000);
+```
+
+En algebra relacional sería: `P(DNI)(CUENTA) - P(DNI)(DLC > 10000)(CUENTA)`.
