@@ -4,12 +4,12 @@
 
 SQL {structure querry language}
 
-#### Conceptos generales
+### Conceptos generales
 
 * Este lenguaje contiene relativamente pocas sentencias
 * Las secuencias se forman for clausulas
 * El lenguaje no entiende de mayusculas o minusculas.
-    * Pero se usan mayusculas como buena practica
+  * Pero se usan mayusculas como buena practica
 * Las secuencias se divide en líneas por clusulas para mantener estilo
 * Las clausulas que daremos en clase son obligatorias
 
@@ -34,7 +34,7 @@ Aunque SELECT sea la proyección, esta proyección *no* borra los duplicados a n
 
 ```SQL
 SELECT NBC FROM CLIENTES
-``` 
+```
 
 Para que no existan duplicados lo escribiriamos de la siguiente forma añadiendo la extension _DISTINCT_.
 
@@ -68,7 +68,7 @@ FROM CLIENTE;
 
 Esto muestra la columna de CDC pero con el nombre de columna CIUDAD
 
-```
+```TXT
 CIUDAD
 -------
 LA LAGUNA
@@ -91,10 +91,10 @@ FROM CUENTA C1, CLIENTE C2;
 
 Para representar el producto cartesiano:
 
-```SQL 
+```SQL
 SELECT *
 FROM T1 CROSS JOIN T2;
-``` 
+```
 
 Para representar la yunción natural:
 
