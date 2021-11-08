@@ -190,7 +190,7 @@ DNI de personas que tienen cuenta en la sucursal donde tiene cuenta la persona c
 
 ```SQL
 SELECT DNI
-FROM CUENTA
+FROM CUENTA C1
 WHERE CS IN(SELECT CS
             FROM CUENTA
             WHERE DNI=1111);
@@ -209,3 +209,36 @@ WHERE DNI NOT IN (SELECT DNI
 ```
 
 En algebra relacional sería: `P(DNI)(CUENTA) - P(DNI)(DLC > 10000)(CUENTA)`.
+
+```SQL
+SELECT C1.DNI
+FROM CUENTA C1, CUENTA C2
+WHERE (C1.CS = C2.CS) AND (C2.DNI=1111);
+```
+
+En álgebra relacional se vería como:
+
+```TXT
+C1=C2=CUENTA
+P(C1.DNI) S((C1.CS) AND (C2.DNI = 1111))(C1 X C2)
+```
+
+El cualificador _ANY_:
+
+`exp op.comp ANY (conjunto de valores)`
+
+No se usa el _ANY_ si puede sustituirse por IN(= ANY <-> IN, <> ANY X), para mayor o menor.
+
+El cualificador _ALL_:
+
+`exp op.comp ALL (conjunto de valores)`
+
+Si para todos los valores del conjunto se verifica la expresión devuelve true, no se usa con (= para </> NOT IN).
+
+```SQL
+SELECT DNI
+FROM CUENTA
+WHERE (CS=1) AND (SLD >= ALL(SELECT SLC
+                          FROM CUENTA
+                          WHERE CS=1));
+```
